@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings version="1">
+  <section id="plugin.program.silvobuild">
+    <category id="general" label="General">
+      <group id="1">
+        <setting id="builds_url" type="string" label="Build list URL">
+          <level>0</level>
+          <default>https://raw.githubusercontent.com/lintthief-source/kodi-build/main/docs/builds.json</default>
+          <control type="edit" format="string"><heading>Build list URL</heading></control>
+        </setting>
+        <setting id="installed_version" type="string" label="Installed build version">
+          <level>0</level>
+          <default></default>
+          <control type="edit" format="string"><heading>Installed build version</heading></control>
+        </setting>
+      </group>
+    </category>
+  </section>
+</settings>
