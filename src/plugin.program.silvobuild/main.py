@@ -1,6 +1,7 @@
 """Silvo Build Wizard - installs the Aeon Nox SiLVO + Trakt build from a GitHub release."""
 import json
 import os
+import re
 import sys
 import time
 import zipfile
@@ -59,6 +60,8 @@ def menu():
     add_item("Set list link template (where the TV Shows tiles open)", {"action": "template"},
              plot="Type or paste the link pattern the tiles open ({slug} = list name). Leave empty for the default (TMDb Helper). "
                   "Stored on this device only.")
+    add_item("Install missing dependencies (fixes JellyCon / helper errors)", {"action": "deps"},
+             plot="Installs any helper modules the add-ons in the build need from Kodi's repositories.")
     add_item("Authorize Trakt (TMDb Helper)", {"action": "trakt"})
     add_item("Settings", {"action": "settings"})
     xbmcplugin.endOfDirectory(HANDLE)
@@ -103,10 +106,61 @@ def jsonrpc(method, params):
     return json.loads(xbmc.executeJSONRPC(json.dumps({"jsonrpc": "2.0", "id": 1, "method": method, "params": params})))
 
 
-def post_install(addon_ids):
+def addon_imports(addon_id):
+    """Required (non-optional) dependencies of an add-on folder in special://home/addons, minus Kodi core."""
+    try:
+        with open(os.path.join(HOME, "addons", addon_id, "addon.xml"), encoding="utf8") as f:
+            xml = f.read()
+    except OSError:
+        return []
+    out = []
+    for tag in re.findall(r"<import\s[^>]*>", xml):
+        m = re.search(r'addon="([^"]+)"', tag)
+        if m and 'optional="true"' not in tag and not m.group(1).startswith(("xbmc.", "kodi.")):
+            out.append(m.group(1))
+    return out
+
+
+def install_dependencies(addon_ids, dlg=None):
+    """Files copied in by the wizard are not dependency-resolved by Kodi, so install anything missing from the repos.
+    Returns the list of dependencies that are still missing afterwards."""
+    missing = []
+    for a in addon_ids:
+        for dep in addon_imports(a):
+            if dep not in missing and not xbmc.getCondVisibility("System.HasAddon(%s)" % dep):
+                missing.append(dep)
+    still = []
+    for n, dep in enumerate(missing):
+        if dlg:
+            dlg.update(int(n * 100 / max(len(missing), 1)), "Installing dependency %d / %d\n%s" % (n + 1, len(missing), dep))
+        xbmc.executebuiltin("InstallAddon(%s)" % dep, True)
+        xbmc.sleep(1500)
+        if not xbmc.getCondVisibility("System.HasAddon(%s)" % dep):
+            still.append(dep)
+    return still
+
+
+def fix_dependencies():
+    """Menu action: scan every add-on in special://home/addons and install missing dependencies."""
+    dlg = xbmcgui.DialogProgress()
+    dlg.create("Silvo Build Wizard", "Checking dependencies...")
+    ids = [d for d in os.listdir(os.path.join(HOME, "addons")) if os.path.isfile(os.path.join(HOME, "addons", d, "addon.xml"))]
+    xbmc.executebuiltin("UpdateLocalAddons")
+    xbmc.sleep(2000)
+    still = install_dependencies(ids, dlg)
+    dlg.close()
+    xbmcgui.Dialog().ok("Silvo Build Wizard",
+                        "All dependencies are installed.\nRestart Kodi to finish." if not still else
+                        "Could not install: %s\nCheck your internet connection and try again." % ", ".join(still))
+
+
+def post_install(addon_ids, dlg=None):
     os.makedirs(SCREENSHOTS, exist_ok=True)
     xbmc.executebuiltin("UpdateLocalAddons")
     xbmc.sleep(3000)
+    still = install_dependencies(addon_ids, dlg)
+    if still:
+        xbmcgui.Dialog().ok("Silvo Build Wizard", "Some dependencies could not be installed:\n%s\nUse 'Install missing dependencies' in the wizard menu later." % ", ".join(still))
     for a in addon_ids:
         jsonrpc("Addons.SetAddonEnabled", {"addonid": a, "enabled": True})
     jsonrpc("Settings.SetSettingValue", {"setting": "debug.screenshotpath", "value": SCREENSHOTS + os.sep})
@@ -141,7 +195,7 @@ def install(build_id):
         if os.path.exists(zpath):
             os.remove(zpath)
     dlg.update(100, "Finishing up...")
-    post_install(addon_ids)
+    post_install(addon_ids, dlg)
     dlg.close()
     ADDON.setSetting("installed_version", build["version"])
     if dialog.yesno("Silvo Build Wizard",
@@ -171,7 +225,9 @@ def set_template():
 def main():
     params = dict(parse_qsl(sys.argv[2][1:]))
     action = params.get("action")
-    if action == "template":
+    if action == "deps":
+        fix_dependencies()
+    elif action == "template":
         set_template()
     elif action == "install":
         install(params["id"])
