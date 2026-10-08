@@ -112,6 +112,8 @@ def views_overlay():
     v = json.load(open(VIEWS_LIVE, encoding="utf8"))
     v.setdefault("plugin.video.themoviedb.helper", {}).update({"videos": LIST_VIEW, "tvshows": LIST_VIEW, "movies": LIST_VIEW,
                                                                "seasons": SEASON_VIEW, "episodes": EPISODE_VIEW})
+    # appearance only: same views for The Crew's show / season / episode pages (does not install or enable anything)
+    v.setdefault("plugin.video.thecrew", {}).update({"tvshows": LIST_VIEW, "seasons": SEASON_VIEW, "episodes": EPISODE_VIEW})
     os.makedirs(os.path.dirname(VIEWS_OUT), exist_ok=True)
     json.dump(v, open(VIEWS_OUT, "w", encoding="utf8"))
 
