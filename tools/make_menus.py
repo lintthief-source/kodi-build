@@ -149,7 +149,7 @@ def patch_addon_settings():
     """TMDb Helper: use Trakt watched indicators. JellyCon: hide unwatched details. (The wizard does the same on
     other devices via setSetting - tokens/credentials in these files are never packaged.)"""
     for addon, sid, val in (("plugin.video.themoviedb.helper", "trakt_watchedindicators", "true"),
-                            ("plugin.video.jellycon", "hide_unwatched_details", "true")):
+                            ("plugin.video.jellycon", "hide_unwatched_details", "false")):
         f = os.path.join(KODI, "userdata", "addon_data", addon, "settings.xml")
         os.makedirs(os.path.dirname(f), exist_ok=True)
         txt = open(f, encoding="utf8").read() if os.path.exists(f) else '<settings version="2">\n</settings>\n'

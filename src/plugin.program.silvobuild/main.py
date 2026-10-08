@@ -165,7 +165,7 @@ def post_install(addon_ids, dlg=None):
         jsonrpc("Addons.SetAddonEnabled", {"addonid": a, "enabled": True})
     jsonrpc("Settings.SetSettingValue", {"setting": "debug.screenshotpath", "value": SCREENSHOTS + os.sep})
     for addon_id, setting, value in (("plugin.video.themoviedb.helper", "trakt_watchedindicators", "true"),
-                                     ("plugin.video.jellycon", "hide_unwatched_details", "true")):
+                                     ("plugin.video.jellycon", "hide_unwatched_details", "false")):
         try:
             xbmcaddon.Addon(addon_id).setSetting(setting, value)
         except Exception as e:  # noqa: BLE001 - add-on may not be loaded yet; not fatal
