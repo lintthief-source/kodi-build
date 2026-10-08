@@ -1,0 +1,66 @@
+<shortcuts>
+	<shortcut>
+		<defaultID>pictures</defaultID>
+		<label>1</label>
+		<label2 />
+		<icon>special://skin/extras/icons/DefaultPicture.png</icon>
+		<thumb />
+		<action>ActivateWindow(Pictures,return)</action>
+		</shortcut>
+	<shortcut>
+		<defaultID>music</defaultID>
+		<label>2</label>
+		<label2 />
+		<icon>special://skin/extras/icons/DefaultAudio.png</icon>
+		<thumb />
+		<action>ActivateWindow(Music,files)</action>
+		</shortcut>
+	<shortcut>
+		<defaultID>movies-showall</defaultID>
+		<label>Movies</label>
+		<label2>Video Add-On</label2>
+		<icon>DefaultShortcut.png</icon>
+		<thumb>image://C%3a%5cUsers%5cmarkd%5cAppData%5cRoaming%5cKodi%5caddons%5cplugin.video.jellycon%5cicon.png/</thumb>
+		<action>ActivateWindow(Videos,"plugin://plugin.video.jellycon/?url=/Users/%7Buserid%7D/Items%3FIncludeItemTypes%3DMovie%26CollapseBoxSetItems%3DTrue%26GroupItemsIntoCollections%3DTrue%26Recursive%3DTrue%26IsMissing%3DFalse%26Fields%3DDateCreated%252CEpisodeCount%252CSeasonCount%252CPath%252CGenres%252CStudios%252CEtag%252CTaglines%252CSortName%252CRecursiveItemCount%252CChildCount%252CProductionLocations%252CCriticRating%252COfficialRating%252CCommunityRating%252CPremiereDate%252CProductionYear%252CAirTime%252CStatus%252CTags%252CMediaStreams%252COverview%26ImageTypeLimit%3D1%26ParentId%3Df137a2dd21bbc1b99aa5c0f6bf02a805%26format%3Djson&amp;mode=GET_CONTENT&amp;media_type=movies",return)</action>
+		</shortcut>
+	<shortcut>
+		<defaultID>tvshows</defaultID>
+		<label>20343</label>
+		<label2 />
+		<icon>special://skin/extras/icons/DefaultTVShows.png</icon>
+		<thumb />
+		<action>ActivateWindow(Videos,videodb://tvshows/titles/,return)</action>
+		</shortcut>
+	<shortcut>
+		<defaultID />
+		<label>Jellyfin TV</label>
+		<label2>Jellyfin</label2>
+		<icon>DefaultShortcut.png</icon>
+		<thumb>special://home/addons/plugin.video.jellycon/icon.png</thumb>
+		<action>ActivateWindow(Videos,"plugin://plugin.video.jellycon/?url=/Users/%7Buserid%7D/Items%3FFields%3DDateCreated%252CEpisodeCount%252CSeasonCount%252CPath%252CGenres%252CStudios%252CEtag%252CTaglines%252CSortName%252CRecursiveItemCount%252CChildCount%252CProductionLocations%252CCriticRating%252COfficialRating%252CCommunityRating%252CPremiereDate%252CProductionYear%252CAirTime%252CStatus%252CTags%252CMediaStreams%252COverview%26ImageTypeLimit%3D1%26IsMissing%3DFalse%26IncludeItemTypes%3DSeries%26Recursive%3DTrue%26ParentId%3Da656b907eb3a73532e40e44b968d0225%26format%3Djson&amp;mode=GET_CONTENT&amp;media_type=tvshows",return)</action>
+		</shortcut>
+	<shortcut>
+		<defaultID>programs</defaultID>
+		<label>$SKIN[31957|skin.aeon.nox.silvo|None]</label>
+		<label2 />
+		<icon>special://skin/extras/icons/DefaultAddon.png</icon>
+		<thumb />
+		<action>ActivateWindow(1133)</action>
+		</shortcut>
+	<shortcut>
+		<defaultID>settings</defaultID>
+		<label>13000</label>
+		<label2 />
+		<icon>special://skin/extras/icons/DefaultAddonService.png</icon>
+		<thumb />
+		<action>ActivateWindow(Settings)</action>
+		</shortcut>
+	<shortcut>
+		<defaultID>power</defaultID>
+		<label>33060</label>
+		<label2 />
+		<icon>special://skin/extras/icons/power.png</icon>
+		<thumb />
+		<action>ActivateWindow(shutdownmenu)</action>
+		</shortcut>
+	</shortcuts>

@@ -3,3 +3,4 @@ backups/
 trakt_lists.json
 __pycache__/
 *.pyc
+downloads/

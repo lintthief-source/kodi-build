@@ -107,6 +107,12 @@ def post_install(addon_ids):
     for a in addon_ids:
         jsonrpc("Addons.SetAddonEnabled", {"addonid": a, "enabled": True})
     jsonrpc("Settings.SetSettingValue", {"setting": "debug.screenshotpath", "value": SCREENSHOTS + os.sep})
+    for addon_id, setting, value in (("plugin.video.themoviedb.helper", "trakt_watchedindicators", "true"),
+                                     ("plugin.video.jellycon", "hide_unwatched_details", "true")):
+        try:
+            xbmcaddon.Addon(addon_id).setSetting(setting, value)
+        except Exception as e:  # noqa: BLE001 - add-on may not be loaded yet; not fatal
+            log("could not set %s/%s: %s" % (addon_id, setting, e))
     jsonrpc("Settings.SetSettingValue", {"setting": "lookandfeel.skin", "value": SKIN_ID})
 
 

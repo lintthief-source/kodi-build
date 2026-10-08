@@ -28,7 +28,7 @@ DATA = {
     "script.skinshortcuts": lambda f: not f.endswith(".hash") and (
         not f.startswith("skin.") or f.startswith("skin.aeon.nox.silvo")),
 }
-SKIP = re.compile(r"(__pycache__|\.pyc$|\.pyo$|\.git/)")
+SKIP = re.compile(r"(__pycache__|\.pyc$|\.pyo$|\.orig$|\.git/)")
 
 def portable(text):
     # image://C%3a%5cUsers%5c<u>%5cAppData%5cRoaming%5cKodi%5caddons%5c<x>/  ->  special://home/addons/<x>
@@ -53,6 +53,12 @@ def main():
         for f in os.listdir(base) if os.path.isdir(base) else []:
             if os.path.isfile(os.path.join(base, f)) and ok(f):
                 files["userdata/addon_data/%s/%s" % (a, f)] = os.path.join(base, f)
+    bdir = os.path.join(ROOT, "build_addons")                   # add-ons that live in this repo (Silvo Lists)
+    for r, _, fs in os.walk(bdir):
+        for f in fs:
+            p = os.path.join(r, f)
+            if not SKIP.search(p.replace("\\", "/")):
+                files["addons/" + os.path.relpath(p, bdir).replace("\\", "/")] = p
     for r, _, fs in os.walk(os.path.join(ROOT, "media")):       # screenshots folder
         for f in fs:
             files["media/" + os.path.relpath(os.path.join(r, f), os.path.join(ROOT, "media")).replace("\\", "/")] = os.path.join(r, f)

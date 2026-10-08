@@ -1,4 +1,4 @@
-"""Fetch the user's Trakt lists (name, slug, show/movie counts) using the token Kodi's
+"""Fetch the user's Trakt lists (name, slug, counts, first items' TMDb ids) using the token Kodi's
 The Crew already stored plus the Trakt app client id from the HA LCARS config.
 Writes list metadata only - never prints or saves the token."""
 import json, os, re, sys, urllib.request
@@ -17,8 +17,10 @@ out = []
 for l in api("/users/me/lists"):
     slug = l["ids"]["slug"]
     items = api("/users/me/lists/%s/items" % slug)
+    first = [{"type": i["type"], "title": i[i["type"]]["title"], "tmdb": i[i["type"]]["ids"].get("tmdb")}
+             for i in items if i["type"] in ("show", "movie")][:8]
     out.append({"name": l["name"], "slug": slug, "privacy": l["privacy"],
                 "shows": sum(i["type"] == "show" for i in items),
-                "movies": sum(i["type"] == "movie" for i in items)})
+                "movies": sum(i["type"] == "movie" for i in items), "first": first})
 json.dump(out, open(sys.argv[1], "w"), indent=2)
-for l in out: print(l)
+for l in out: print({k: v for k, v in l.items() if k != "first"})

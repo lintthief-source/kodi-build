@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings version="1">
+  <section id="plugin.video.silvolists">
+    <category id="general" label="General">
+      <group id="1">
+        <setting id="list_url_template" type="string" label="List link template">
+          <level>0</level>
+          <default>plugin://plugin.video.themoviedb.helper/?info=trakt_userlist&amp;list_slug={slug}</default>
+          <control type="edit" format="string">
+            <heading>List link template ({slug} = Trakt list slug, {name} = list name)</heading>
+          </control>
+        </setting>
+      </group>
+    </category>
+  </section>
+</settings>

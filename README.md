@@ -23,3 +23,8 @@ Bump the wizard/repo version in `src/*/addon.xml` when you change them.
 ## What is NOT in the build
 Trakt/TMDb tokens, databases, caches, Jellyfin logins, and other skins' data. Authorize Trakt (TMDb Helper) and
 log in to JellyCon once per device.
+
+## Silvo Lists tiles
+The TV Shows widget is the `Silvo Lists` add-on (poster collage per Trakt list; regenerate art with
+`python tools/make_collages.py`). Where a tile opens is set per device in
+Add-ons > My add-ons > Video add-ons > Silvo Lists > Configure > *List link template* (`{slug}` / `{name}` placeholders).

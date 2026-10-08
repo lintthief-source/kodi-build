@@ -1,0 +1,90 @@
+[
+  {
+    "name": "TV Shows to Watch",
+    "slug": "tv-shows-to-watch",
+    "art": "resources/art/tv-shows-to-watch.jpg",
+    "fanart": "resources/art/tv-shows-to-watch-fanart.jpg",
+    "shows": 4,
+    "movies": 0
+  },
+  {
+    "name": "Movies to Watch",
+    "slug": "movies-to-watch",
+    "art": "resources/art/movies-to-watch.jpg",
+    "fanart": "resources/art/movies-to-watch-fanart.jpg",
+    "shows": 0,
+    "movies": 4
+  },
+  {
+    "name": "Grace",
+    "slug": "grace",
+    "art": "resources/art/grace.jpg",
+    "fanart": "resources/art/grace-fanart.jpg",
+    "shows": 37,
+    "movies": 0
+  },
+  {
+    "name": "finished",
+    "slug": "finished",
+    "art": "resources/art/finished.jpg",
+    "fanart": "resources/art/finished-fanart.jpg",
+    "shows": 48,
+    "movies": 0
+  },
+  {
+    "name": "Theodore",
+    "slug": "theodore",
+    "art": "resources/art/theodore.jpg",
+    "fanart": "resources/art/theodore-fanart.jpg",
+    "shows": 17,
+    "movies": 0
+  },
+  {
+    "name": "Star Trek",
+    "slug": "star-trek",
+    "art": "resources/art/star-trek.jpg",
+    "fanart": "resources/art/star-trek-fanart.jpg",
+    "shows": 10,
+    "movies": 0
+  },
+  {
+    "name": "Top Shows",
+    "slug": "top-shows",
+    "art": "resources/art/top-shows.jpg",
+    "fanart": "resources/art/top-shows-fanart.jpg",
+    "shows": 12,
+    "movies": 0
+  },
+  {
+    "name": "Premier Picks",
+    "slug": "premier-picks",
+    "art": "resources/art/premier-picks.jpg",
+    "fanart": "resources/art/premier-picks-fanart.jpg",
+    "shows": 17,
+    "movies": 0
+  },
+  {
+    "name": "Comedy",
+    "slug": "comedy",
+    "art": "resources/art/comedy.jpg",
+    "fanart": "resources/art/comedy-fanart.jpg",
+    "shows": 10,
+    "movies": 0
+  },
+  {
+    "name": "Reality",
+    "slug": "reality",
+    "art": "resources/art/reality.jpg",
+    "fanart": "resources/art/reality-fanart.jpg",
+    "shows": 8,
+    "movies": 0
+  },
+  {
+    "name": "Others",
+    "slug": "others",
+    "art": "resources/art/others.jpg",
+    "fanart": "resources/art/others-fanart.jpg",
+    "shows": 3,
+    "movies": 0
+  }
+]
