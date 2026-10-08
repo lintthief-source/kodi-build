@@ -56,6 +56,9 @@ def menu():
         add_item("Install: %s  v%s%s" % (b["name"], b["version"], flag),
                  {"action": "install", "id": b["id"]},
                  plot="%s\nSize: %.0f MB\nInstalled version: %s" % (b.get("description", ""), b.get("size", 0) / 1048576, installed))
+    add_item("Set list link template (where the TV Shows tiles open)", {"action": "template"},
+             plot="Type or paste the link pattern the tiles open ({slug} = list name). Leave empty for the default (TMDb Helper). "
+                  "Stored on this device only.")
     add_item("Authorize Trakt (TMDb Helper)", {"action": "trakt"})
     add_item("Settings", {"action": "settings"})
     xbmcplugin.endOfDirectory(HANDLE)
@@ -144,14 +147,33 @@ def install(build_id):
     if dialog.yesno("Silvo Build Wizard",
                     "Build installed.\nTo see your Trakt lists, authorize Trakt in TMDb Helper.\nOpen the Trakt authorization now?"):
         xbmc.executebuiltin("RunScript(%s,authenticate_trakt)" % TRAKT_ADDON)
+    if dialog.yesno("Silvo Build Wizard", "Set where the TV Shows list tiles open now?\n(You can also do this later from this wizard's menu.)"):
+        set_template()
     if dialog.yesno("Silvo Build Wizard", "Kodi should restart to finish. Close Kodi now?\n(Then just open it again.)"):
         xbmc.executebuiltin("Quit")
+
+
+def set_template():
+    """Prompt for the Silvo Lists link template; empty restores the default. Device-local, never shipped."""
+    try:
+        lists = xbmcaddon.Addon("plugin.video.silvolists")
+    except RuntimeError:
+        xbmcgui.Dialog().ok("Silvo Build Wizard", "Silvo Lists is not installed or enabled yet. Install the build first.")
+        return
+    value = xbmcgui.Dialog().input("List link template ({slug} = list name; empty = default)",
+                                   defaultt=lists.getSetting("list_url_template"))
+    if value is None:
+        return
+    lists.setSetting("list_url_template", value.strip())
+    xbmcgui.Dialog().notification("Silvo Build Wizard", "Template saved" if value.strip() else "Template reset to default", time=3000)
 
 
 def main():
     params = dict(parse_qsl(sys.argv[2][1:]))
     action = params.get("action")
-    if action == "install":
+    if action == "template":
+        set_template()
+    elif action == "install":
         install(params["id"])
     elif action == "trakt":
         xbmc.executebuiltin("RunScript(%s,authenticate_trakt)" % TRAKT_ADDON)
