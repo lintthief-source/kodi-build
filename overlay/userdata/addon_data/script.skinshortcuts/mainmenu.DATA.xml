@@ -40,6 +40,14 @@
 		<action>ActivateWindow(Videos,"plugin://plugin.video.jellycon/?url=/Users/%7Buserid%7D/Items%3FFields%3DDateCreated%252CEpisodeCount%252CSeasonCount%252CPath%252CGenres%252CStudios%252CEtag%252CTaglines%252CSortName%252CRecursiveItemCount%252CChildCount%252CProductionLocations%252CCriticRating%252COfficialRating%252CCommunityRating%252CPremiereDate%252CProductionYear%252CAirTime%252CStatus%252CTags%252CMediaStreams%252COverview%26ImageTypeLimit%3D1%26IsMissing%3DFalse%26IncludeItemTypes%3DSeries%26Recursive%3DTrue%26ParentId%3Da656b907eb3a73532e40e44b968d0225%26format%3Djson&amp;mode=GET_CONTENT&amp;media_type=tvshows",return)</action>
 		</shortcut>
 	<shortcut>
+		<defaultID>livetv</defaultID>
+		<label>$SKIN[31502|skin.aeon.nox.silvo|None]</label>
+		<label2 />
+		<icon>special://skin/extras/icons/DefaultAddonPVRClient.png</icon>
+		<thumb />
+		<action>ActivateWindow(Videos,"plugin://plugin.video.silvolivetv/",return)</action>
+		</shortcut>
+	<shortcut>
 		<defaultID>programs</defaultID>
 		<label>$SKIN[31957|skin.aeon.nox.silvo|None]</label>
 		<label2 />
