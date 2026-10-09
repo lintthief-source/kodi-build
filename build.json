@@ -1,7 +1,7 @@
 {
   "id": "silvo",
   "name": "Aeon Nox SiLVO + Trakt",
-  "version": "1.0.3",
-  "description": "Aeon Nox SiLVO with poster-collage Trakt list tiles, Landscape/MyFlix/Episode views, Jellyfin TV, and a screenshots folder.",
+  "version": "1.0.4",
+  "description": "Aeon Nox SiLVO with poster-collage Trakt list tiles and Movies folder tiles, hover backgrounds, Landscape/MyFlix/Episode views, Jellyfin TV, Live TV list and a screenshots folder.",
   "github": "lintthief-source/kodi-build"
 }

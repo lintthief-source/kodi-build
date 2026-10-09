@@ -1,0 +1,77 @@
+{
+  "url_template": "plugin://plugin.video.jellycon/?url=/Users/%7Buserid%7D/Items%3FIncludeItemTypes%3DMovie%26CollapseBoxSetItems%3DTrue%26GroupItemsIntoCollections%3DTrue%26Recursive%3DTrue%26IsMissing%3DFalse%26Fields%3DDateCreated%252CEpisodeCount%252CSeasonCount%252CPath%252CGenres%252CStudios%252CEtag%252CTaglines%252CSortName%252CRecursiveItemCount%252CChildCount%252CProductionLocations%252CCriticRating%252COfficialRating%252CCommunityRating%252CPremiereDate%252CProductionYear%252CAirTime%252CStatus%252CTags%252CMediaStreams%252COverview%26ImageTypeLimit%3D1%26ParentId%3D{id}%26format%3Djson&mode=GET_CONTENT&media_type=movies",
+  "folders": [
+    {
+      "name": "New Movies",
+      "slug": "new-movies",
+      "id": "c2257bbd84a4b4bb4f9f4e16cd641326",
+      "count": 2,
+      "art": "resources/art/new-movies.jpg",
+      "fanart": "resources/art/new-movies-fanart.jpg"
+    },
+    {
+      "name": "Christmas Movies",
+      "slug": "christmas-movies",
+      "id": "89613829c7faa2d339bac9cccce02855",
+      "count": 19,
+      "art": "resources/art/christmas-movies.jpg",
+      "fanart": "resources/art/christmas-movies-fanart.jpg"
+    },
+    {
+      "name": "Halloween Movies",
+      "slug": "halloween-movies",
+      "id": "f524c0d344f588d0ffd15fc320df83c7",
+      "count": 10,
+      "art": "resources/art/halloween-movies.jpg",
+      "fanart": "resources/art/halloween-movies-fanart.jpg"
+    },
+    {
+      "name": "Family Movies",
+      "slug": "family-movies",
+      "id": "d7e58e58ad49209c59171d6a3ecd6952",
+      "count": 37,
+      "art": "resources/art/family-movies.jpg",
+      "fanart": "resources/art/family-movies-fanart.jpg"
+    },
+    {
+      "name": "Comedy Movies",
+      "slug": "comedy-movies",
+      "id": "754992a84b34defb793daaceaab5fa14",
+      "count": 18,
+      "art": "resources/art/comedy-movies.jpg",
+      "fanart": "resources/art/comedy-movies-fanart.jpg"
+    },
+    {
+      "name": "Action and Adventure Movies",
+      "slug": "action-and-adventure-movies",
+      "id": "248056e3387f446b5ba37e2403eff7fb",
+      "count": 2,
+      "art": "resources/art/action-and-adventure-movies.jpg",
+      "fanart": "resources/art/action-and-adventure-movies-fanart.jpg"
+    },
+    {
+      "name": "Sci-Fi and Fantasy Movies",
+      "slug": "sci-fi-and-fantasy-movies",
+      "id": "548255fc6d4722b3f06e641bbeff7ab1",
+      "count": 9,
+      "art": "resources/art/sci-fi-and-fantasy-movies.jpg",
+      "fanart": "resources/art/sci-fi-and-fantasy-movies-fanart.jpg"
+    },
+    {
+      "name": "Horror and Thriller Movies",
+      "slug": "horror-and-thriller-movies",
+      "id": "3c9e519107e87dc7bd42c261ec2188df",
+      "count": 12,
+      "art": "resources/art/horror-and-thriller-movies.jpg",
+      "fanart": "resources/art/horror-and-thriller-movies-fanart.jpg"
+    },
+    {
+      "name": "Romance Movies",
+      "slug": "romance-movies",
+      "id": "a9061f9befc5eca696b2bde3f10ac090",
+      "count": 1,
+      "art": "resources/art/romance-movies.jpg",
+      "fanart": "resources/art/romance-movies-fanart.jpg"
+    }
+  ]
+}

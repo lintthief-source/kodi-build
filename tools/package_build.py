@@ -51,7 +51,7 @@ def main():
     for a, ok in DATA.items():
         base = os.path.join(KODI, "userdata", "addon_data", a)
         for f in os.listdir(base) if os.path.isdir(base) else []:
-            if os.path.isfile(os.path.join(base, f)) and ok(f):
+            if os.path.isfile(os.path.join(base, f)) and ok(f) and not re.search(r"madtitansports|sporthdme|oneplay|thecrew", f, re.I):
                 files["userdata/addon_data/%s/%s" % (a, f)] = os.path.join(base, f)
     bdir = os.path.join(ROOT, "build_addons")                   # add-ons that live in this repo (Silvo Lists)
     for r, _, fs in os.walk(bdir):

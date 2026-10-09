@@ -13,8 +13,7 @@ FANART = xbmcaddon.Addon().getAddonInfo("fanart")
 
 # (add-on id, label override or None)
 PVR = "pvr.iptvsimple"
-ADDONS = ("plugin.video.madtitansports", "plugin.video.the-loop", "plugin.video.looptv", "plugin.video.loopguide",
-          "plugin.video.sporthdme", "plugin.video.OnePlay.Matrix")
+ADDONS = ("plugin.video.the-loop", "plugin.video.looptv", "plugin.video.loopguide")
 
 
 def info(addon_id):
